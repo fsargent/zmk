@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
@@ -6,11 +5,5 @@ if SHIELD_BOARDSOURCE5X12
 
 config ZMK_KEYBOARD_NAME
     default "boardsource5x12"
-=======
-if SHIELD_5X12
-
-config ZMK_KEYBOARD_NAME
-    default "5x12"
->>>>>>> 863f15b (Initial commit of BoardSource 5x12 ZMK profile.)
 
 endif
