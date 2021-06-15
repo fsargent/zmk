@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
 config SHIELD_BOARDSOURCE5X12
     def_bool $(shields_list_contains,boardsource5x12)
-=======
-config SHIELD_5X12
-    def_bool $(shields_list_contains,5x12)
->>>>>>> 863f15b (Initial commit of BoardSource 5x12 ZMK profile.)
