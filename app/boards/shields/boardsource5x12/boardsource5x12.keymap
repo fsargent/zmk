@@ -72,11 +72,11 @@ SPECIAL {
 	};
 NAV {
 	bindings = <
-			&kp LC(LS(GRAV))&kp LC(GRAV)	&as LS(N1) N1	&as LS(N2) N2	&as LS(N3) N3	&as LS(N4) N4	&as LS(N5) N5	&as LS(N6) N6	&as LS(N7) N7	&as LS(N8) N8	&as LS(N9) N9 &as LS(MINUS) MINUS &as LS(EQL) EQL
-			&kp LS(LA(TAB))	&kp LA(TAB)		&kp PG_UP		&kp UP		&kp RET		&kp LC(DEL)		&none		&none		&none		&none	&none	&kp F12
-			&none			&kp LC(LEFT)	&kp LEFT		&kp DOWN	&kp RIGHT	&kp LC(RIGHT)	&none		&none		&none		&none	&none	&kp RET
-			&kp LSHIFT 		&kp HOME		&kp PG_DN		&kp LG(RET)	&kp SPACE	&kp END			&none		&none		&as LS(LBKT) LBKT	&as LS(RBKT) RBKT		&kp BSLH	&kp RET
-			&kp RCTRL		&kp LALT		&none 			&none 		&none		&kp LGUI    	&kp SPACE	&none		&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT
+			&kp LC(LS(GRAV))&kp LC(GRAV)	&as LS(N1) N1	&as LS(N2) N2	&as LS(N3) N3	&as LS(N4) N4	&as LS(N5) N5	&as LS(N6) N6	&as LS(N7) N7		&as LS(N8) N8 		&as LS(MINUS) MINUS &as LS(EQL) EQL
+			&kp LS(LA(TAB))	&kp LA(TAB)		&kp PG_UP		&kp UP			&kp RET			&kp LC(DEL)		&none			&none			&none				&none				&none				&kp F12
+			&none			&kp LC(LEFT)	&kp LEFT		&kp DOWN		&kp RIGHT		&kp LC(RIGHT)	&none			&none			&none				&none				&none				&kp RET
+			&kp LSHIFT 		&kp HOME		&kp PG_DN		&kp LC(RET)		&kp SPACE		&kp END			&none			&none			&as LS(LBKT) LBKT	&as LS(RBKT) RBKT	&kp BSLH			&kp RET
+			&kp RCTRL		&kp LALT		&none 			&none 			&none			&kp LGUI    	&kp SPACE		&none			&kp LEFT			&kp DOWN			&kp UP				&kp RIGHT
 >;
 	};
 
