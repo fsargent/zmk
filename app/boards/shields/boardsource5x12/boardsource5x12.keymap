@@ -140,6 +140,17 @@
 		key-positions=<12 13>;
 		bindings=<&kp TAB>;
 	};
+	combo_tab2 {
+		timeout-ms=<25>;
+		key-positions=<34 35>;
+		bindings=<&kp TAB>;
+	};
+
+		combo_stab2 {
+		timeout-ms=<25>;
+		key-positions=<32 33>;
+		bindings=<&kp LS(TAB)>;
+	};
 
 	combo_esc {
 		timeout-ms=<25>;
@@ -197,7 +208,7 @@
             bindings = <
 	&none		&none		&none		&none		&none		&none		&none		&none		&none		&none		&none		&none	
 	&kp Q		&kp W		&kp E		&kp R		&kp T		&none		&none		&kp Y		&kp U		&kp I		&kp O		&kp P
-	&hm LGUI A	&hm LALT S	&hm LCTRL D	&hm LSHFT F	&kp G		&none		&none		&kp H		&hm RSHFT J	&hm RCTRL K	&hm LALT L	&hm LGUI QUOT
+	&hm LALT A	&hm LCTRL S	&hm LGUI D	&hm LSHFT F	&kp G		&none		&none		&kp H		&hm RSHFT J	&hm RGUI K	&hm RCTRL L	&hm RALT QUOT
 	&kp Z		&kp X		&kp C		&kp V		&kp B		&none		&none		&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
 	&none		&none		&none		&none		&lt NAV_L TAB	&hm LGUI BKSP	&lt NUM_L SPACE	&lt SYM_L RET	&none		&none		&none		&none
                     >;
@@ -208,9 +219,9 @@
             label = "Nav";
             bindings = <
 	&none		&none		&none		&none		&none			&none	&none	&none		&none		&none		&none		&none	
-	&kp LA(BSPC)	&kp LG(Z)	&kp UP		&kp LG(LS(Z))	&kp LA(DEL)		&none	&none	&trans		&kp LA(BSPC)	&kp UP		&kp LA(DEL)	&trans
-	&kp LA(LEFT)	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LA(RIGHT)		&none	&none	&kp LA(LEFT)	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LA(RIGHT)
-	&kp LG(LEFT)	&kp LS(LA(LEFT)) &kp RET	&kp LS(LA(RIGHT)) &kp LG(RIGHT)		&none	&none	&trans		&kp HOME	&kp PG_DN	&kp PG_UP	&kp END
+	&kp LA(BSPC)	&kp LG(Z)	&kp UP		&kp LG(LS(Z))	&kp LA(DEL)		&none	&none	&trans		&kp LA(BSPC)	&kp LS(LG(TAB))	&kp LG(TAB)	&trans
+	&kp LA(LEFT)	&kp LEFT	&kp DOWN	&kp RIGHT	&kp LA(RIGHT)		&none	&none	&kp LA(LEFT)	&kp LG(LBKT)	&kp LS(LG(TILDE)) &kp LG(TILDE) &kp LG(RBKT)
+	&kp LG(LEFT)	&kp LS(LA(LEFT)) &kp RET	&kp LS(LA(RIGHT)) &kp LG(RIGHT)		&none	&none	&trans		&kp HOME	&kp LS(LC(TAB))	&kp LC(TAB)	&kp END
 	&none		&none		&none		&none		&trans			&trans	&kp ESC	&kp DEL		&none		&none		&none		&none
             >;
         };
@@ -220,8 +231,8 @@
             bindings = <
 	&none		&none		&none		&none		&none		&none	&none	&none		&none		&none		&none		&none
 	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&none	&none	&none		&none		&none		&none		&none
-	&trans		&trans		&trans		&trans		&trans		&none	&none	&trans		&trans		&trans		&trans		&trans
-	&trans		&trans		&trans		&trans		&out OUT_BLE	&none	&none	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
+	&trans		&trans		&trans		&trans		&bt BT_PRV	&none	&none	&bt BT_NXT	&trans		&trans		&trans		&trans
+	&bt BT_CLR	&trans		&trans		&trans		&out OUT_BLE	&none	&none	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4
 	&none		&none		&none		&none		&trans		&trans	&trans	&trans		&none		&none		&none		&none
             >;
         };
@@ -229,22 +240,22 @@
         num_layer {
             label = "Num";
             bindings = <
-	    	&none		&none		&none		&none	&none	&none	&none	&none	&none	&none		&none		&none	
-		&kp N1		&kp N2		&kp N3		&kp N4	&kp N5	&none	&none	&kp N6	&kp N7	&kp N8		&kp N9		&kp N0
-		&kp TAB		&kp LBKT	&kp RBKT	&none	&none	&none	&none	&trans	&trans	&kp LBKT	&kp RBKT	&kp SEMI
-		&kp GRAVE	&kp MINUS	&kp EQUAL	&none	&none	&none	&none	&trans	&trans	&kp MINUS	&kp EQUAL	&kp BSLH
-		&none		&none		&none		&none	&kp ESC	&kp ESC	&trans	&trans	&none	&none		&none		&none	
+		&none		&none		&none		&none	&none	&none		&none	&none	&none	&none		&none		&none	
+		&kp N1		&kp N2		&kp N3		&kp N4	&kp N5	&none		&none	&kp N6	&kp N7	&kp N8		&kp N9		&kp N0
+		&hm LALT TAB	&hm LCTRL LBKT	&hm LGUI RBKT	&trans	&trans	&none		&none	&trans	&trans	&hm RGUI LBKT	&hm RCTRL RBKT	&hm RALT SEMI
+		&kp GRAVE	&kp MINUS	&kp EQUAL	&trans	&trans	&none		&none	&trans	&trans	&kp MINUS	&kp EQUAL	&kp BSLH
+		&none		&none		&none		&none	&kp DEL	&kp BKSP	&trans	&trans	&none	&none		&none		&none	
             >;
         };
 
         sym_layer {
             label = "Sym";
-            bindings = <
-	    	&none		&none		&none		&none		&none		&none		&none		&none		&none		&none		&none		&none	
-		&kp LS(N1)	&kp LS(N2)	&kp LS(N3)	&kp LS(N4)	&kp LS(N5)	&none		&none		&kp LS(N6)	&kp LS(N7)	&kp LS(N8)	&kp LS(N9)	&kp LS(N0)
-		&kp LS(TAB)	&trans		&trans		&trans		&trans		&none		&none		&trans		&trans		&kp LS(LBKT)	&kp LS(RBKT)	&kp LS(SEMI)
-		&kp LS(GRAVE)	&trans		&trans		&none		&none		&none		&none		&trans		&trans		&kp LS(MINUS)	&kp LS(EQUAL)	&kp LS(BSLH)
-		&none		&none		&none		&none		&kp ESC		&kp ESC		&none		&none		&none		&trans		&trans 		&none
+            bindings = <	
+		&none		 &none			&none			&none		&none		&none		&none		&none		&none		&none		 	&none			&none	
+		&kp LS(N1)	 &kp LS(N2)		&kp LS(N3)		&kp LS(N4)	&kp LS(N5)	&none		&none		&kp LS(N6)	&kp LS(N7)	&kp LS(N8)		&kp LS(N9)		&kp LS(N0)
+		&hm LALT LS(TAB) &hm LCTRL LS(LBKT)	&hm LGUI LS(RBKT)	&trans		&trans		&none		&none		&trans		&trans		&hm RGUI LS(LBKT)	&hm RCTRL LS(RBKT)	&hm RALT LS(SEMI)
+		&kp LS(GRAVE)	 &kp LS(MINUS)		&kp LS(EQUAL)		&none		&none		&none		&none		&trans		&trans		&kp LS(MINUS)		&kp LS(EQUAL)		&kp LS(BSLH)
+		&none		 &none			&none			&none		&kp DEL		&kp BKSP	&none		&none		&none		&trans			&trans 			&none
             >;
         };
 
@@ -262,11 +273,11 @@
         fun_layer {
             label = "Fun";
             bindings = <
-	    	&none	&none	&none	&none	&none		&none	&none	&none	&none	&none	&none	&none	
-		&kp F12	&kp F7	&kp F8	&kp F9	&kp PSCRN	&none	&none	&trans	&trans	&trans	&trans	&trans
-		&kp F11	&kp F4	&kp F5	&kp F6	&kp SLCK	&none	&none	&trans	&trans	&trans	&trans	&trans
-		&kp F10	&kp F1	&kp F2	&kp F3	&kp PAUSE_BREAK	&none	&none	&trans	&trans	&trans	&trans	&trans
-		&none	&none	&none	&none	&none		&none	&trans	&trans &none	&none	&none	&none	
+	    	&none	&none		&none		&none	&none	&none	&none	&none	&none	&none	&none	&none	
+		&kp F1	&kp F2		&kp F3  	&kp F4	&kp F5	&none	&none	&kp F6 	&kp F7	&kp F8	&kp F9	&kp F10		
+		&kp F11	&kp F12		&trans		&trans	&trans	&none	&none	&trans	&trans	&trans	&trans	&trans
+		&kp SLCK&kp PSCRN	&kp PAUSE_BREAK &trans	&trans	&none	&none	&trans	&trans	&trans	&trans	&trans
+		&none	&none		&none		&none	&none	&none	&trans	&trans  &none	&none	&none	&none	
             >;
         };
     };
