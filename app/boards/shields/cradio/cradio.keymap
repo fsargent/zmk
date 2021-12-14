@@ -15,11 +15,13 @@
 #define SYM_L 4
 #define MED_L 5
 #define FUN_L 6
+#define WIN_L 7
+#define GAM_L 8
 
-//		0    1    2    3    4  		 21    20    19    18    17
-// 		5    6    7    8    9  		 26    25    24    23    22
-// 		10   11   12   13   14 		 31    30    29    28    27
-// 		               15   16 		 33    32
+//	0	1	2	3	4		5	6	7	8	9 
+//	10	11	12	13	14		15	16	17	18	19
+//	20	21	22	23	24		25	26	27	28	29
+//				30	31		32	33
 // 		>;
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
@@ -30,14 +32,14 @@
 
  	bt_mo {
  		timeout-ms=<50>;
- 		key-positions=<16 33>;
+ 		key-positions=<31 32>;
  		bindings=<&mo OTH_L>;
  	}
  	;
 
  	med_mo {
  		timeout-ms=<50>;
- 		key-positions=<15 16>;
+ 		key-positions=<30 31>;
  		bindings=<&mo MED_L>;
  	}
 
@@ -53,7 +55,7 @@
 
  	combo_one {
  		timeout-ms=<50>;
- 		key-positions=<0 5>;
+ 		key-positions=<0 10>;
  		bindings=<&kp N1>;
  	}
 
@@ -61,7 +63,7 @@
 
  	combo_two {
  		timeout-ms=<50>;
- 		key-positions=<1 6>;
+ 		key-positions=<1 11>;
  		bindings=<&kp N2>;
  	}
 
@@ -69,7 +71,7 @@
 
  	combo_three {
  		timeout-ms=<50>;
- 		key-positions=<2 7>;
+ 		key-positions=<2 12>;
  		bindings=<&kp N3>;
  	}
 
@@ -77,7 +79,7 @@
 
  	combo_four {
  		timeout-ms=<50>;
- 		key-positions=<3 8>;
+ 		key-positions=<3 13>;
  		bindings=<&kp N4>;
  	}
 
@@ -85,7 +87,7 @@
 
  	combo_five {
  		timeout-ms=<50>;
- 		key-positions=<4 9>;
+ 		key-positions=<4 14>;
  		bindings=<&kp N5>;
  	}
 
@@ -93,14 +95,14 @@
 
  	combo_six {
  		timeout-ms=<50>;
- 		key-positions=<21 26>;
+ 		key-positions=<5 15>;
  		bindings=<&kp N6>;
  	}
  	;
 
  	combo_seven {
  		timeout-ms=<50>;
- 		key-positions=<20 25>;
+ 		key-positions=<6 16>;
  		bindings=<&kp N7>;
  	}
 
@@ -108,7 +110,7 @@
 
  	combo_eight {
  		timeout-ms=<50>;
- 		key-positions=<19 24>;
+ 		key-positions=<7 17>;
  		bindings=<&kp N8>;
  	}
 
@@ -116,7 +118,7 @@
 
  	combo_nine {
  		timeout-ms=<50>;
- 		key-positions=<18 23>;
+ 		key-positions=<8 18>;
  		bindings=<&kp N9>;
  	}
 
@@ -124,7 +126,7 @@
 
  	combo_zero {
  		timeout-ms=<50>;
- 		key-positions=<17 22>;
+ 		key-positions=<9 19>;
  		bindings=<&kp N0>;
  	};
 
@@ -147,13 +149,13 @@
 
 	combo_esc {
 		timeout-ms=<25>;
-		key-positions=<5    6    7    8>;
+		key-positions=<10	11	12	13>;
 		bindings=<&kp ESC>;
 	};
 
 	combo_caps{
 		timeout-ms=<25>;
-		key-positions=<10   11   12   13>;
+		key-positions=<20	21	22	23>;
 		bindings=<&kp CAPS>;
 	};
 
@@ -181,6 +183,11 @@
 		key-positions=<12 13>;
 		bindings=<&kp LG(V)>;
 	};
+	combo_windows{
+		timeout-ms=<25>;
+		key-positions=<0 1 2 3>;
+		bindings=<&tog WIN_L>;
+	};
  };
 
     behaviors {
@@ -199,15 +206,17 @@
                 compatible = "zmk,keymap";
       
         default_layer {
-            label = "Base";
+            label = "Felix";
             bindings = <
 	&kp Q		&kp W		&kp E		&kp R		&kp T			&kp Y		&kp U		&kp I		&kp O		&kp P
 	&hm LALT A	&hm LCTRL S	&hm LGUI D	&hm LSHFT F	&kp G			&kp H		&hm RSHFT J	&hm RGUI K	&hm RCTRL L	&hm RALT QUOT
 	&kp Z		&kp X		&kp C		&kp V		&kp B			&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
 					&lt NAV_L TAB	&hm LGUI BKSP				&lt NUM_L SPACE	&lt SYM_L RET			
-                    >;
+	>;
 
 	};
+
+	
 
         nav_layer {
             label = "Nav";
@@ -266,9 +275,31 @@
 		&kp F1	&kp F2		&kp F3  	&kp F4	&kp F5	&kp F6	&kp F7	&kp F8	&kp F9	&kp F10		
 		&kp F11	&kp F12		&trans		&trans	&trans	&trans	&trans	&trans	&trans	&trans
 		&kp SLCK&kp PSCRN	&kp PAUSE_BREAK &trans	&trans	&trans	&trans	&trans	&trans	&trans
-							&trans	&trans	&none	&none	
+							&tog 7	&to 7	&none	&none	
             >;
         };
         
+
+	windows_layer {
+            label = "Windows";
+            bindings = <
+	&kp Q		&kp W		&kp E		&kp R		&kp T			&kp Y		&kp U		&kp I		&kp O		&kp P
+	&kp A		&hm LALT S	&hm LCTRL D	&hm LSHFT F	&kp G			&kp H		&hm RSHFT J	&hm RCTRL K	&hm RALT L	&kp QUOT
+	&hm LGUI Z	&kp X		&kp C		&kp V		&kp B			&kp N		&kp M		&kp COMMA	&kp DOT		&kp FSLH
+					&lt NAV_L TAB	&hm LCTRL BKSP				&lt NUM_L SPACE	&lt SYM_L RET			
+                    >;
+
+	};
+
+	// games_layer {
+        //     label = "Games";
+        //     bindings = <
+	// &kp Q	&kp W	&kp E	&kp R	&kp T		&kp Y	&kp U	&kp I	&kp O	&kp P
+	// &kp A	&kp S	&kp D	&kp F	&kp G		&kp H	&kp J	&kp K	&kp L	&kp QUOT
+	// &kp LCTRL &kp X	&kp C	&kp V	&kp B		&kp N	&kp M	&kp COMMA	&kp DOT	&kp FSLH
+	// 		&kp SHIFT &kp SPACE		&lt NUM_L SPACE	&lt SYM_L RET			
+        //             >;
+
+	// };
 	};
 };

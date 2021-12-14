@@ -6,7 +6,8 @@ url: https://github.com/davidphilipbarr/Sweep
 requires: [pro_micro]
 exposes: [i2c_oled]
 features:
-  - keys
+  - keys 
+  - display
 siblings:
   - cradio_left
   - cradio_right
