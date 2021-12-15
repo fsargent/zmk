@@ -1,4 +1,5 @@
 /.west
+.dccache
 /bootloader
 /modules
 /tools
