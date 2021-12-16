@@ -1,10 +1,10 @@
-/*                KEY POSITIONS
+/*								KEY POSITIONS
 ╭────────────────────╮ ╭────────────────────╮
-│  0   1   2   3   4 │ │  5   6   7   8   9 │
-│ 10  11  12  13  14 │ │ 15  16  17  18  19 │
-│ 20  21  22  23  24 │ │ 25  26  27  28  29 │
-╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
-						╰────────╯ ╰────────╯            */
+│	0	1	2	3	4 │ │	5	6	7	8	9 │
+│ 10	11	12	13	14 │ │ 15	16	17	18	19 │
+│ 20	21	22	23	24 │ │ 25	26	27	28	29 │
+╰───────────╮ 30	31 │ │ 32	33 ╭───────────╯
+						╰────────╯ ╰────────╯						*/
 
 
 compatible = "zmk,combos";
@@ -16,41 +16,99 @@ combo_##NAME { \
 };
 
 
-COMBO(bt_mo, &tog OTH_L, 30 33) // both outer thumb keys
+// #define LAYER_COMBO(NAME, BINDINGS, KEYPOS, LAYER) \
+// combo_##NAME { \
+// 	bindings = <BINDINGS>; \
+// 	key-positions = <KEYPOS>; \
+// 	layer = <LAYER>;
+// };
+
+
+COMBO(bt_to, &tog BT_L, 0 4) // both outer thumb keys
 // COMBO(bt_mo, &tog MED_L, 31 32) // both inner thumb keys
-COMBO(base_to, &to BASE, 30 31) // Both left thumb keys
-COMBO(fn_mo, &tog FUN_L, 32 33) // both right thumb keys
+COMBO(base_to, &to NAV_L, 30 31) // Both left thumb keys
+COMBO(nav_to, &to NAV_L, 32 33) // both right thumb keys
 
 
+// Numbers
 COMBO(c_one, &kp N1, 0 10)
 COMBO(c_two, &kp N2,1 11)
-COMBO(c_three, &kp N3,2 12)
-COMBO(c_four, &kp N4,3 13)
-COMBO(c_five, &kp N5,4 14 )
-COMBO(c_six, &kp N1, 5 15 )
-COMBO(c_seven, &kp N1,6 16 )
-COMBO(c_eight, &kp N1, 7 17 )
-COMBO(c_nine, &kp N1, 8 18 )
-COMBO(c_zero, &kp N0,9 19 )
+COMBO(c_three, &kp N3, 2 12)
+COMBO(c_four, &kp N4, 3 13)
+COMBO(c_five, &kp N5, 4 14 )
+COMBO(c_six, &kp N6, 5 15 )
+COMBO(c_seven, &kp N7, 6 16 )
+COMBO(c_eight, &kp N8, 7 17 )
+COMBO(c_nine, &kp N9, 8 18 )
+COMBO(c_zero, &kp N0, 9 19 )
 
-COMBO(del_wd, &kp LA(BSPC), 12 13)
-COMBO(c_bksp, &kp BSPC, 9 19)
-COMBO(undo, &kp LG(Z), 20 21)
-COMBO(cut, &kp LG(X), 21 23)
+
+// Text
+
+/*	KEY POSITIONS
+╭──────────────────────────────────────────╮	╭───────────────────────────────────────────────╮
+| 0	1	2	3	4	|	|	5	6	7	8	9	|
+| one	two	three	four	five			six	seven	eight	nine	zero	|
+| 10	11	12 d_wd	13 esc	14	|	|	15 esc	16	17	18	19	|
+| \	[	]	tab	ent			ent	s(tab)	-	=	;	
+| 20 ct	21 cpy	22 pst	23 tild	24	|	|	25 s_tl	26	27	28 alt	29	|
+|
+╰─────────────────────╮ 30 base	31	|	|	32 rais	33	╭──────────────────────╯
+		      ╰────────────────╯	╰──────────────────────╯				
+*/
+
+
+// COMBO(c_bksp, &kp BSPC, 9 19)
+// COMBO(undo, &kp LG(Z), 20 21)
+
+
+
+
+// COMBO(select_all, &kp LG(A), 20 23)
+// COMBO(caps_word, &caps_word, 31 32)
+// COMBO(menu_search, &kp LG(LS(SLASH)), 27 28)
+
+// COMBO(combo_esc, &kp ESC,10	11	12	
+
+
+COMBO(tab, &kp TAB, 13 23)
+COMBO(shift_tab, &kp LS(TAB), 16 26)
+
+//left
+COMBO(cut, &kp LG(X), 20 21)
 COMBO(copy, &kp LG(C), 21 22)
-COMBO(paste, &kp LG(V), 21 22 23)
-COMBO(select_all, &kp LG(A), 20 23)
-COMBO(caps_word, &caps_word, 31 32)
-COMBO(menu_search, &kp LG(LS(SLASH)), 27 28)
+COMBO(paste, &kp LG(V), 22 23)
 
-COMBO(tab, &kp TAB,10 11 )
-COMBO(sh_tab, &kp LS(TAB),18 19 )
+COMBO(caps, &kp CAPSLOCK, 20 21 22 23)
+
+COMBO(tilde, &kp GRAVE, 23 24)
+COMBO(del_wd, &kp LA(BSPC), 12 13)
+COMBO(combo_esc, &kp ESC, 13 14)
+COMBO(combo_ent, &kp ENTER, 14 24)
+
+COMBO(lbracket, &kp LBKT, 11 21)
+COMBO(rbracket, &kp RBKT, 12 22)
+COMBO(bslsh, &kp BSLH, 10 20)
+
+//right 
+COMBO(cmin, &kp MINUS, 17 27)
+COMBO(eql, &kp EQUAL, 18 28)
+COMBO(cln, &kp SEMI, 19 29)
+COMBO(del_fwd, &kp LA(DEL), 16 17)
+COMBO(shift_tilde, &kp LS(GRAVE), 25 26)
+COMBO(c_alt, &kp LALT, 28 29)
+
+
+
+
+//Windows 
+// LAYER_COMBO(win_key, &kp LGUI, 27 28 29, WIN_L)
+
 
 /* Keyboard */
-COMBO(reset, &reset, 11 12 13 17)
-COMBO(bootloader, &bootloader, 14 15 24 25)
+// COMBO(reset, &reset, 11 12 13 17)
+// COMBO(bootloader, &bootloader, 14 15 24 25)
 
-COMBO(combo_esc,&kp ESC,10	11	12	13)
 
 COMBO(combo_windows, &tog WIN_L,0 1 2 3)
 
