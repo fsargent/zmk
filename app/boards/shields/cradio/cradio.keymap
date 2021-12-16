@@ -58,7 +58,7 @@
 		compatible = "zmk,behavior-hold-tap";
 		label = "homerow mods";
 		#binding-cells = <2>;
-		tapping_term_ms = <200>;
+		tapping_term_ms = <150>;
 		flavor = "tap-preferred";
 		bindings = <&kp>, <&kp>;
 	};
@@ -80,10 +80,10 @@
 	default_layer {
 	    label = "Felix";
 	    bindings = <
-	&hm LS(LC(LALT)) Q	&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O		&kp P
-	&kp A			&kp S		&kp D		&kp F		&kp G				&kp H		&kp J	&kp K		&kp L		&hm LS(LC(LALT)) QUOT
-	&sh LSFT Z		&hm LCTRL X	&hm LGUI C	&kp V		&kp B				&kp N		&kp M	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT QMARK 
-								&mo NAV_L	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
+	&kp Q		&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O		&kp P
+	&kp A		&kp S		&kp D		&kp F		&kp G				&kp H		&kp J	&kp K		&kp L		&kp QUOT
+	&sh LSFT Z	&hm LCTRL X	&hm LGUI C	&kp V		&kp B				&kp N		&kp M	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT QMARK 
+								&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
 	>;
 	};		
 	
