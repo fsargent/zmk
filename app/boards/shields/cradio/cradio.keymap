@@ -9,6 +9,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include "oled.dtsi"
 
 #define XXX &none
 #define ___ &trans
@@ -43,7 +45,7 @@
 / {
 
 	combos {
-		#include "combos.dtsi"
+		#include "combos.keymap"
 	};
 
     behaviors {
@@ -102,10 +104,10 @@
 	bt_layer {
 	    label = "Bluetooth";
 	    bindings = <
-	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&trans		&out OUT_USB	&trans		&trans		&reset	
-	&trans		&trans		&trans		&kp LC(LA(DEL))	&bt BT_PRV	&bt BT_NXT	&trans		&trans		&trans		&kp LC(LA(DEL))
-	&bt BT_CLR	&trans		&trans		&trans		&out OUT_BLE	&trans		&trans		&trans		&trans		&bootloader
-							&trans		&to GAME		&trans	&trans				
+	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&trans		&out OUT_USB	&ext_power EP_ON	&ext_power EP_TOG	&reset	
+	&trans		&trans		&trans		&kp LC(LA(DEL))	&bt BT_PRV	&bt BT_NXT	&trans		&ext_power EP_OFF	&trans			&kp LC(LA(DEL))
+	&bt BT_CLR	&trans		&trans		&trans		&out OUT_BLE	&trans		&trans		&trans			&trans			&bootloader
+							&to BASE		&to BASE		&trans	&trans				
 	    >;
 	};
 

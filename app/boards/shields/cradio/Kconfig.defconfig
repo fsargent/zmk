@@ -11,6 +11,13 @@ config ZMK_SPLIT_BLE_ROLE_CENTRAL
 
 endif
 
+if SHIELD_CRADIO_RIGHT
+
+config ZMK_EXT_POWER
+	default n
+
+endif
+
 if SHIELD_CRADIO_LEFT || SHIELD_CRADIO_RIGHT
 
 config ZMK_SPLIT
