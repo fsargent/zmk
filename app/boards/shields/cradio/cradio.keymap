@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include "oled.dtsi"
+// #include "oled.dtsi"
 
 #define XXX &none
 #define ___ &trans
@@ -22,12 +22,13 @@
 #define STICKY_KEY_TIMEOUT 60000
 
 #define BASE 0
-#define NAV_L 1
-#define BT_L 2
-#define WIN_L 3
-#define W_NAV_L 4
-#define GAME 5
-#define FUN_L 6
+#define CMK 1
+#define NAV_L 2
+#define BT_L 3
+#define WIN_L 4
+#define W_NAV_L 5
+#define GAME 6
+#define FUN_L 7
 
 // #define NUM_L 4
 // #define SYM_L 5
@@ -83,9 +84,19 @@
 	default_layer {
 	    label = "Felix";
 	    bindings = <
-	&kp Q		&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O		&kp P
+	&sh LALT Q		&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O		&kp P
 	&kp A		&kp S		&kp D		&kp F		&kp G				&kp H		&kp J	&kp K		&kp L		&kp QUOT
 	&sh LSFT Z	&hm LCTRL X	&kp C		&kp V		&kp B				&kp N		&kp M	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT FSLH 
+							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
+	>;
+	};		
+
+	colemak {
+	    label = "Colemak";
+	    bindings = <
+	&kp Q		&kp W		&kp F		&kp P		&kp B				&kp J		&kp L	&kp U		&kp Y		&kp QUOT
+	&kp A		&kp R		&kp S		&kp T		&kp G				&kp M		&kp N	&kp E		&kp I		&kp O
+	&sh LSFT Z	&hm LCTRL X	&kp C		&kp D		&kp V				&kp K		&kp H	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT FSLH 
 							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
 	>;
 	};		
@@ -107,7 +118,7 @@
 	&bt BT_SEL 0	&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4	&trans		&out OUT_USB	&ext_power EP_ON	&ext_power EP_TOG	&reset	
 	&trans		&trans		&trans		&kp LC(LA(DEL))	&bt BT_PRV	&bt BT_NXT	&trans		&ext_power EP_OFF	&trans			&kp LC(LA(DEL))
 	&bt BT_CLR	&trans		&trans		&trans		&out OUT_BLE	&trans		&trans		&trans			&trans			&bootloader
-							&to BASE		&to BASE		&trans	&trans				
+							&to BASE		&to BASE		&tog CMK	&tog CMK				
 	    >;
 	};
 
@@ -175,3 +186,26 @@
 	
 	};
 };
+
+
+// &i2c0 {
+// 	status = "okay";
+// 	sda-pin = <34>; // nice!nano pin 102
+// 	scl-pin = <39>; // nice!nano pin 107
+
+// 	oled: ssd1306@3c {
+// 		compatible = "solomon,ssd1306fb";
+// 		reg = <0x3c>;
+// 		label = "DISPLAY";
+// 		width = <128>;
+// 		height = <32>;
+// 		segment-offset = <0>;
+// 		page-offset = <0>;
+// 		display-offset = <0>;
+// 		multiplex-ratio = <31>;
+// 		com-invdir;
+// 		segment-remap;
+// 		com-sequential;
+// 		prechargep = <0x22>;
+// 	};
+// };
