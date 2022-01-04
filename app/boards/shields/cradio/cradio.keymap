@@ -131,6 +131,16 @@
 							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
 	>;
 	};		
+
+	colemak {
+	    label = "Colemak";
+	    bindings = <
+	&kp Q		&kp W		&kp F		&kp P		&kp B				&kp J		&kp L	&kp U		&kp Y		&kp QUOT
+	&kp A		&kp R		&kp S		&kp T		&kp G				&kp M		&kp N	&kp E		&kp I		&kp O
+	&sh LSFT Z	&hm LCTRL X	&kp C		&kp D		&kp V				&kp K		&kp H	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT FSLH 
+							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
+	>;
+	};		
 	
 	
 	nav_layer {
