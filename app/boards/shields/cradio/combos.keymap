@@ -28,10 +28,10 @@ combo_##NAME { \
 
 /*	KEY POSITIONS
     ╭──────────────────────────────────────────╮    ╭───────────────────────────────────────────────╮
-    | 0        1        2        3        4    |    |    5        6        7        8        9      |
+    | 0        1        2        3        4    |    |    5        6        7    (   8    )   9      |
     | one      two      three    four     five |    |    six      seven    eight    nine     zero   |
     | 10       11       12 d_wd  13 esc   14   |    |    15 esc   16       17       18       19     |
-    | tab      [        ]        tab      ent  |    |    ent      s(tab)   -        =        ;      |
+    | tab      [        ]        s(tab)   ent  |    |    ent      s(tab)   -        =        ;      |
     | 20 ct    21 cpy   22 pst   23 tild  24   |    |    25 s(`)  26      27        28 alt   29     |
     ╰──────────────────────────╮ 30  meh  31   |    |    32 rais  33 ╭─────────────────────────────╯
                               ╰────────────────╯    ╰───────────────╯
@@ -40,7 +40,7 @@ combo_##NAME { \
 
 // 
 //     ╭──────────────────────────────────────────╮    ╭───────────────────────────────────────────────╮
-//     | Q        W        E        R        T    |    |    Y        U        I        O        P      |
+//     | Q        W        E        R        T    |    |    Y        U        I    (   O    )   P      |
 //     | one      two      three    four     five |    |    six      seven    eight    nine     zero   |
 //     | A        S        D  d_wd  F  undo  G    |    |    H  redo  J        K        L        '  s   |
 //     | tab      [        ]        s(tab)   ent  |    |    ent      s(tab)   -        =        ;      |
@@ -58,7 +58,7 @@ COMBO(left_thumbs, &kp LS(LC(LALT)), 30 31, BASE CMK NAV_L) // Both left thumb k
 COMBO(left_thumbs_win, &kp LALT, 30 31, WIN_L W_NAV_L) // Both left thumb keys on Windows
 COMBO(right_thumbs, &sl FUN_L, 32 33, BASE CMK NAV_L WIN_L W_NAV_L GAME) // both right thumb keys
 
-COMBO(inner_thumbs, &tog CMK, 31 32, BASE CMK NAV_L WIN_L W_NAV_L GAME) // both inner thumb keys 
+COMBO(inner_thumbs, &to BT_L, 31 32, BASE CMK NAV_L WIN_L W_NAV_L GAME) // both inner thumb keys 
 
 
 // Numbers
@@ -80,7 +80,7 @@ COMBO(p_quot, &kp N0, 9 19, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(az, &kp TAB, 10 20, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(sx, &kp LBKT, 11 21, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(dc, &kp RBKT, 12 22, BASE CMK NAV_L WIN_L W_NAV_L)
-COMBO(fv, &kp TAB, 13 23, BASE CMK NAV_L WIN_L W_NAV_L)
+COMBO(fv, &kp S(TAB), 13 23, BASE CMK NAV_L WIN_L W_NAV_L)
 
 // horiz
 
@@ -114,6 +114,8 @@ COMBO(l_period, &kp EQUAL, 18 28, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(quot_ques, &kp SEMI, 19 29, BASE CMK NAV_L WIN_L W_NAV_L)
 
 // horiontal
+COMBO(op, &kp RPAR, 8 9, BASE CMK NAV_L WIN_L W_NAV_L)
+COMBO(io, &kp LPAR, 7 8, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(jkl, &kp ESC, 17 18 19, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(hj, &kp LG(LS(Z)), 15 16, BASE CMK NAV_L)
 COMBO(jk, &kp LA(DEL), 16 17, BASE CMK NAV_L)

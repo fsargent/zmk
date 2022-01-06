@@ -66,6 +66,22 @@
 		flavor = "tap-preferred";
 		bindings = <&kp>, <&kp>;
 	};
+	lp: lp_mod {
+		compatible = "zmk,behavior-hold-tap";
+		label = "lpmod";
+		#binding-cells = <2>;
+		tapping_term_ms = <150>;
+		flavor = "tap-preferred";
+		bindings = <&kp>, <&lparen>;
+	};
+	rp: rp_mod {
+		compatible = "zmk,behavior-hold-tap";
+		label = "rpmod";
+		#binding-cells = <2>;
+		tapping_term_ms = <150>;
+		flavor = "tap-preferred";
+		bindings = <&kp>, <&rparen>;
+	};
 
 	skq: sticky_key_quick_release {
 		compatible = "zmk,behavior-sticky-key";
@@ -75,7 +91,22 @@
 		quick-release;
 		release-after-ms = <STICKY_KEY_TIMEOUT>;
 	};
-    };
+ lparen: l_paren {
+            compatible = "zmk,behavior-mod-morph";
+            label = "L_PAREN";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+	rparen: r_paren {
+            compatible = "zmk,behavior-mod-morph";
+            label = "R_PAREN";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+};
 
 
 	keymap {
@@ -84,9 +115,9 @@
 	default_layer {
 	    label = "Felix";
 	    bindings = <
-	&sh LALT Q		&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O		&kp P
-	&kp A		&kp S		&kp D		&kp F		&kp G				&kp H		&kp J	&kp K		&kp L		&kp QUOT
-	&sh LSFT Z	&hm LCTRL X	&kp C		&kp V		&kp B				&kp N		&kp M	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT FSLH 
+	&sh LALT Q	&kp W		&kp E		&kp R		&kp T				&kp Y		&kp U	&kp I		&kp O	&kp P
+	&kp A		&kp S		&kp D		&kp F		&kp G				&kp H		&kp J	&kp K		&kp L	&kp QUOT
+	&sh LSFT Z	&hm LCTRL X	&kp C		&kp V		&kp B				&kp N		&kp M	&lp LGUI 0	&rp LCTRL 1	&sh RSFT FSLH 
 							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
 	>;
 	};		
@@ -94,8 +125,8 @@
 	colemak {
 	    label = "Colemak";
 	    bindings = <
-	&kp Q		&kp W		&kp F		&kp P		&kp B				&kp J		&kp L	&kp U		&kp Y		&kp QUOT
-	&kp A		&kp R		&kp S		&kp T		&kp G				&kp M		&kp N	&kp E		&kp I		&kp O
+	&sh LALT Q	&kp W		&kp F		&kp P		&kp B				&kp J		&kp L	&kp U	&kp Y	&kp QUOT
+	&kp A		&kp R		&kp S		&kp T		&kp G				&kp M		&kp N	&kp E	&kp I	&kp O
 	&sh LSFT Z	&hm LCTRL X	&kp C		&kp D		&kp V				&kp K		&kp H	&hm LGUI COMMA	&hm LCTRL DOT	&sh RSFT FSLH 
 							&lt NAV_L ESC	&hm LGUI BSPC			&kp SPACE	&sh RSFT RET			
 	>;
@@ -105,9 +136,9 @@
 	nav_layer {
 	    label = "Nav";
 	    bindings = <
-	&kp LS(TAB) 	&kp LA(BSPC)		&kp UP		&kp LA(DEL) 	&kp TAB			&kp LA(LG(ESC))	&kp LBRC	&kp RBRC 	&kp PIPE	&kp BSLH
+	&kp LS(TAB) 	&kp LA(BSPC)		&kp UP		&kp LA(DEL) 	&kp TAB			&kp LA(LG(ESC))	&none		&kp LBRC	&kp RBRC 	&kp BSLH
 	&kp LA(LEFT)	&kp LEFT		&kp DOWN	&kp RIGHT	&kp LA(RIGHT)		&none		&kp LG(Z)	&kp LS(LG(Z))	&kp COLON	&kp SEMI 
-	&sh LSFT HOME 	&hm LCTRL LG(LEFT)	&hm LGUI RET	&kp LG(RIGHT)	&kp END			&none		&none		&hm RGUI MINUS	&hm RCTRL EQL	&sh RSFT FSLH 
+	&sh LSFT HOME 	&hm LCTRL LG(LEFT)	&hm LGUI RET	&kp LG(RIGHT)	&kp END			&kp LT		&kp GT		&hm RGUI LBRC	&hm RCTRL RBRC	&sh RSFT BSLH 
 								&to BASE	&trans			&trans		&trans				
 	    >;
 	};
