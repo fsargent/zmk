@@ -8,6 +8,13 @@
 
 / {
 
+	ext-power {
+		compatible = "zmk,ext-power-generic";
+		label = "EXT_POWER";
+		control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+		init-delay-ms = <50>;
+	};
+
 	chosen {
 		zmk,kscan = &kscan0;
 		zmk,matrix_transform = &default_transform;
@@ -50,27 +57,6 @@
 	};
 };
 
-&pro_micro_i2c {
-	status = "okay";
-	sda-pin = <34>; // nice!nano pin 102
-	scl-pin = <39>; // nice!nano pin 107
-
-	oled: ssd1306@3c {
-		compatible = "solomon,ssd1306fb";
-		reg = <0x3c>;
-		label = "DISPLAY";
-		width = <128>;
-		height = <32>;
-		segment-offset = <0>;
-		page-offset = <0>;
-		display-offset = <0>;
-		multiplex-ratio = <31>;
-		com-invdir;
-		segment-remap;
-		com-sequential;
-		prechargep = <0x22>;
-	};
-};
 
 
 &i2c0 {

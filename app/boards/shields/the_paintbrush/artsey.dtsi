@@ -52,11 +52,11 @@
  *  ONLY ENABLE ONE OF THESE
 *****************************************/
 //#define ARTSEY_RIGHT 1
-//#define ARTSEY_LEFT 1
+#define ARTSEY_LEFT 1
 //#define ARTSEY_BIG 1
 // If you use COLEMAK as your standard keyboard layout, you may want this
 //     This define will make base artsey keys and N more in line with COLEMAK
-//#define ARTSEY_COLEMAK 1
+#define ARTSEY_COLEMAK 1
 
 /*****************************************
  * Define key positions used for combos
