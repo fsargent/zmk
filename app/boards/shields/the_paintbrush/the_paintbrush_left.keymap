@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Left/Right
-#define ARTSEY_LEFT 1
+#define ARDUX_LEFT 1
 
 // ARTS Row
 #define KEY_A 3
@@ -27,5 +27,5 @@
 #define MIDDLE_NONES NONE(0, 0, 0)
 #define TRAILING_NONES NONE(0, 0, 0)
 
-// Include main artsey.io keymap
-#include "artsey.dtsi"
+// Include main ardux.io keymap
+#include "./ardux.dtsi"

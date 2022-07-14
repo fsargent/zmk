@@ -6,29 +6,6 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/ {
-	chosen {
-		zmk,kscan = &kscan0;
-	};
-
-	kscan0: kscan_0 {
-		compatible = "zmk,kscan-gpio-direct";
-
-		label = "KSCAN";
-
-		input-gpios
-			= <&pro_micro_a 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_a 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_a 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_a 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_d 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_d 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&pro_micro_d 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            ;
-	};
-};
-
 &pro_micro_i2c {
 	status = "okay";
 
@@ -46,5 +23,29 @@
 		com-invdir;
 		com-sequential;
 		prechargep = <0x22>;
+	};
+};
+
+/ {
+	chosen {
+		zmk,kscan = &kscan0;
+		zephyr,display = &oled;
+	};
+
+	kscan0: kscan_0 {
+		compatible = "zmk,kscan-gpio-direct";
+
+		label = "KSCAN";
+
+		input-gpios
+			= <&pro_micro_a 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_a 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_a 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_a 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_d 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_d 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&pro_micro_d 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
 	};
 };
