@@ -80,17 +80,7 @@ COMBO(p_quot, &kp N0, 9 19, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(az, &kp TAB, 10 20, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(sx, &kp LBKT, 11 21, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(dc, &kp RBKT, 12 22, BASE CMK NAV_L WIN_L W_NAV_L)
-<<<<<<< HEAD
-<<<<<<< HEAD
-COMBO(fv, &kp S(TAB), 13 23, BASE CMK NAV_L WIN_L W_NAV_L)
-=======
-COMBO(fv, &kp TAB, 13 23, BASE CMK NAV_L WIN_L W_NAV_L)
->>>>>>> fbaa2c42 (Added colemak, q is alt, cradio oled works better.)
-
-// horiz
-=======
 COMBO(fv, &kp LS(TAB), 13 23, BASE CMK NAV_L WIN_L W_NAV_L)
->>>>>>> 21842387 (Checking in latest.)
 
 // horizontal
 
@@ -124,11 +114,8 @@ COMBO(l_period, &kp EQUAL, 18 28, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(quot_ques, &kp SEMI, 19 29, BASE CMK NAV_L WIN_L W_NAV_L)
 
 // horiontal
-<<<<<<< HEAD
 COMBO(op, &kp RPAR, 8 9, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(io, &kp LPAR, 7 8, BASE CMK NAV_L WIN_L W_NAV_L)
-=======
->>>>>>> fbaa2c42 (Added colemak, q is alt, cradio oled works better.)
 COMBO(jkl, &kp ESC, 17 18 19, BASE CMK NAV_L WIN_L W_NAV_L)
 COMBO(hj, &kp LG(LS(Z)), 15 16, BASE CMK NAV_L)
 COMBO(jk, &kp LA(DEL), 16 17, BASE CMK NAV_L)
