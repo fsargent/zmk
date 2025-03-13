@@ -68,7 +68,7 @@
 
     combos1 {
         compatible = "zmk,combos";
-        combo_alt_bspc {
+        combo_ret {
             timeout-ms = <100>;
             key-positions = <49 50>;  // j + k keys
             bindings = <&kp RET>;
@@ -95,13 +95,7 @@
             key-positions = <57 51>; //fn+x+l
             bindings = <&long_press_change 0 0>;
         };
-        combo_b {
-            timeout-ms = <1000>;
-            layers =< 1 3>;
-            //slow-release = <true>;
-            key-positions = <60>; //fn+b
-            bindings = <&out OUT_BAT>;
-        };
+
 
         combo_win_l {
             timeout-ms = <1000>;
