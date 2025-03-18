@@ -82,10 +82,20 @@ sh  z  x  c  v  b  n  m  ,  .  /  shift
 */
     combos1 {
         compatible = "zmk,combos";
-        combo_ret {
-            timeout-ms = <100>;
+        combo_tab {
+            timeout-ms = <75>;
             key-positions = <49 50>;  // j + k keys
             bindings = <&kp TAB>;
+        };
+        combo_grave {
+            timeout-ms = <75>;
+            key-positions = <49 50 51>;  // j + k keys
+            bindings = <&kp GRAVE>;
+        };
+        combo_ret {
+            timeout-ms = <100>;
+            key-positions = <49 50 51 52>;  // j + k keys
+            bindings = <&kp RET>;
         };
         combo_asdf {
           timeout-ms = <100>;
@@ -95,17 +105,17 @@ sh  z  x  c  v  b  n  m  ,  .  /  shift
         combo_cv {
           timeout-ms = <100>;
           key-positions = <58 59>;
-          bindings = <&kp LC(V)>;
+          bindings = <&kp LG(V)>;
         };
         combo_xc {
           timeout-ms = <100>;
           key-positions = <57 58>;
-          bindings = <&kp LC(C)>;
+          bindings = <&kp LG(C)>;
         };
         combo_zx {
           timeout-ms = <100>;
           key-positions = <56 57>;
-          bindings = <&kp LC(X)>;
+          bindings = <&kp LG(X)>;
         };
         combo_alt_bspc {
             timeout-ms = <100>;
