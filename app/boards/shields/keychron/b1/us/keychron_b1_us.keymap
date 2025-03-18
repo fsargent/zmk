@@ -65,18 +65,52 @@
         tapping-term-ms = <3000>;
         bindings = <&fn_win>, <&none>;
     };
+/*
 
+00  1  2  3  4  5  6  7  8  9 10 11 12 13
+`                                 -  = backspace
+14 15 16 17 18 19 20 21 22 23 24 25 26 27
+T   q  w  e  r  t  y  u  i  o  p  [  ]  \
+28 29 30 31 32 33 34 35 36 37 38 39 40 41
+C   a  s  d  f  g  h  j  k  l  ;  '  Ent
+42 43 44 45 46 47 48 49 50 51 52 53 54
+sh  z  x  c  v  b  n  m  ,  .  /  shift
+55 56 57 58 59 60 61 62 63 64 65 66
+67 68 69 70
+
+
+*/
     combos1 {
         compatible = "zmk,combos";
         combo_ret {
             timeout-ms = <100>;
             key-positions = <49 50>;  // j + k keys
-            bindings = <&kp RET>;
+            bindings = <&kp TAB>;
+        };
+        combo_asdf {
+          timeout-ms = <100>;
+          key-positions = <43 44 45 46>;
+          bindings = <&kp ESC>;
+        };
+        combo_cv {
+          timeout-ms = <100>;
+          key-positions = <58 59>;
+          bindings = <&kp LC(V)>;
+        };
+        combo_xc {
+          timeout-ms = <100>;
+          key-positions = <57 58>;
+          bindings = <&kp LC(C)>;
+        };
+        combo_zx {
+          timeout-ms = <100>;
+          key-positions = <56 57>;
+          bindings = <&kp LC(X)>;
         };
         combo_alt_bspc {
             timeout-ms = <100>;
             key-positions = <45 46>;  // D + F keys
-            bindings = <&kp LA(BSPC)>;
+            bindings = <&kp BSPC>;
         };
           combo_bootloader {
             timeout-ms = <100>;
