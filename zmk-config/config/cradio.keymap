@@ -1,0 +1,178 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define BASE 0
+#define NAV_L 1
+#define BT_L 2
+#define GAME 3
+#define FUN_L 4
+#define NUM_L 5
+
+// Core home-row settings from the daily-driver Glove80 QWERTY keymap.
+// Opposite-hand keys and all thumbs can trigger a hold; decide on release.
+#define LEFT_KEYS 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+#define RIGHT_KEYS 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
+#define THUMB_KEYS 30 31 32 33
+#define HOME_MOD(NAME, TERM, IDLE, OPPOSITE) \
+    NAME: NAME { \
+        compatible = "zmk,behavior-hold-tap"; \
+        #binding-cells = <2>; \
+        flavor = "tap-preferred"; \
+        tapping-term-ms = <TERM>; \
+        quick-tap-ms = <300>; \
+        require-prior-idle-ms = <IDLE>; \
+        hold-trigger-key-positions = <OPPOSITE THUMB_KEYS>; \
+        hold-trigger-on-release; \
+        bindings = <&kp>, <&kp>; \
+    };
+
+&lt {
+    quick-tap-ms = <200>;
+};
+
+/ {
+    macros {
+        unstick: unstick {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+        };
+    };
+
+    combos {
+        #include "combos.dtsi"
+    };
+
+    behaviors {
+        // Apply Ctrl+Alt+Shift+GUI to the next key only; expire if unused.
+        hyper: sticky_hyper {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <5000>;
+            quick-release;
+            ignore-modifiers;
+            lazy;
+        };
+
+        // Glove80 thumb timing: balanced, 200 ms hold, 300 ms repeat.
+        thumb: thumb_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <300>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        HOME_MOD(hr_lp, 260, 150, RIGHT_KEYS)
+        HOME_MOD(hr_lr, 240, 150, RIGHT_KEYS)
+        HOME_MOD(hr_lm, 210, 150, RIGHT_KEYS)
+        HOME_MOD(hr_li, 170, 100, RIGHT_KEYS)
+        HOME_MOD(hr_ri, 170, 100, LEFT_KEYS)
+        HOME_MOD(hr_rm, 210, 150, LEFT_KEYS)
+        HOME_MOD(hr_rr, 240, 150, LEFT_KEYS)
+        HOME_MOD(hr_rp, 260, 150, LEFT_KEYS)
+
+        sh: shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <180>;
+            quick-tap-ms = <180>;
+            require-prior-idle-ms = <100>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        // Legacy hold-taps retained for navigation, gaming, and thumb keys.
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <180>;
+            require-prior-idle-ms = <125>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            quick-release;
+            release-after-ms = <1000>;
+            ignore-modifiers;
+            lazy;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Felix";
+            bindings = <
+        &kp Q        &kp W        &kp E        &kp R        &kp T              &kp Y        &kp U        &kp I           &kp O          &kp P
+        &hr_lp LCTRL A &hr_lr LALT S &hr_lm LGUI D &hr_li LSFT F &kp G              &kp H        &hr_ri LSFT J &hr_rm LGUI K &hr_rr LALT L &hr_rp LCTRL SQT
+        &kp Z   &kp X  &kp C        &kp V        &kp B              &kp N        &kp M        &kp COMMA  &kp DOT  &kp FSLH
+                                              &thumb NUM_L ESC &thumb NAV_L BSPC                     &kp SPACE    &skq RSHFT
+            >;
+        };
+
+        nav_layer {
+            display-name = "Nav";
+            bindings = <
+        &sk LSHFT       &kp LG(LS(Z)) &kp UP        &kp BSPC       &kp LG(X)       &kp LG(X) &kp BSPC  &kp LG(Z) &kp LG(LS(Z)) &sk LSHFT
+        &kp LA(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT      &kp LA(RIGHT)    &kp LG(C) &kp LSFT  &kp LGUI   &kp LALT       &kp LCTRL
+        &kp LG(A)      &kp LG(L)     &kp LA(LS(RIGHT)) &kp LG(F) &kp LG(F)       &kp LG(V) &kp HOME  &kp PG_UP  &kp PG_DN      &kp END
+                                              &trans          &trans                       &trans     &trans
+        >;
+        };
+
+        bt_layer {
+            display-name = "Bluetooth";
+            bindings = <
+        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2      &bt BT_SEL 3  &bt BT_SEL 4      &unstick      &out OUT_USB  &trans  &none  &sys_reset
+        &trans        &trans        &trans            &kp LC(LA(DEL)) &bt BT_PRV     &bt BT_NXT    &trans        &trans  &trans  &kp LC(LA(DEL))
+        &bt BT_CLR    &trans        &trans            &trans       &out OUT_BLE      &trans        &trans        &trans  &trans  &bootloader
+                                                      &bootloader  &to GAME                           &trans        &trans
+            >;
+        };
+
+
+
+        games_layer {
+            display-name = "Games";
+            bindings = <
+        &kp Q     &kp W  &kp E  &kp R  &kp T            &kp Y      &kp U  &kp I           &kp O          &kp P
+        &kp A     &kp S  &kp D  &kp F  &kp G            &kp H      &kp J  &kp K           &kp L          &kp SQT
+        &kp LSFT  &kp X  &kp C  &kp V  &kp B            &kp N      &kp M  &hm RALT COMMA  &hm RCTRL DOT  &sh RSFT FSLH
+                                   &kp LCTRL &kp BSPC                  &kp SPACE  &sh LALT RET
+            >;
+        };
+
+        fun_layer {
+            display-name = "Functions";
+            bindings = <
+        &kp F1   &kp F2     &kp F3          &kp F4  &kp F5      &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+        &kp F11  &kp F12    &trans          &trans  &trans      &trans  &trans  &trans  &trans  &trans
+        &kp SLCK &kp PSCRN  &kp PAUSE_BREAK &trans  &trans      &trans  &trans  &trans  &trans  &trans
+                                            &to BASE &none                   &none    &none
+            >;
+        };
+
+        number_layer {
+            display-name = "Numbers";
+            bindings = <
+        &sk LSHFT &kp LG(LS(Z)) &kp LG(Z) &kp BSPC &kp D     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp COLON
+        &kp LCTRL &kp LALT     &kp LGUI  &kp LSFT &kp E     &kp PLUS  &kp N4 &kp N5 &kp N6 &kp MINUS
+        &kp LG(A) &kp LG(L)    &kp LA(LS(RIGHT)) &kp X &kp F &kp ASTRK &kp N1 &kp N2 &kp N3 &kp FSLH
+                                     &trans &trans                  &kp N0 &kp DOT
+            >;
+        };
+
+    };
+};

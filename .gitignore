@@ -3,7 +3,13 @@
 /modules
 /tools
 /zephyr
-/zmk-config
+/zmk-config/*
+!/zmk-config/config/
+/zmk-config/config/*
+!/zmk-config/config/cradio.keymap
+!/zmk-config/config/cradio.conf
+!/zmk-config/config/combos.dtsi
+!/zmk-config/config/SWEEP.md
 /build
 
 # macOS
