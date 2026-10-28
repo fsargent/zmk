@@ -197,3 +197,128 @@ are now tracked under `zmk-config/config/`, alongside the build helper,
 practice-page generator/template/output, and these notes. Other local
 zmk-config files and generated firmware artifacts remain ignored. Older
 statements above about the whole config being ignored are historical.
+
+## Flashed update — 28 October 2026
+
+Started the local practice server at http://localhost:8000/sweep-keymap.html
+(bound to 127.0.0.1; log/PID under build/keymap-preview/).
+Nav now has the number pad directly on its right half, ESDF arrows on
+its left, and home-row modifier hold-taps on both hands with the original
+thresholds/positional rules. Space=0, outer right thumb=decimal; B retains Find. The separate Esc-held
+Numbers layer remains available. Nav right editing/navigation keys were
+replaced by the number pad.
+The outer right thumb is one-shot Meh (`&hyper LS(LA(LCTRL))`), using the
+same 5 s lazy/quick-release/ignore-modifiers behavior as Hyper. It applies
+only on Base; Nav and Numbers both use the decimal thumb.
+Backspace+Space remains one-shot Hyper (includes Cmd). These changes
+were flashed to left/central + (`842AA5C13B65DD18`).
+Data copy completed; the same serial re-enumerated as Felix Sweep.
+Left SHA-256: `0f13a82991d21fa4372e2ed10b322640574f068b07af33caee43c2c31ef3f8ca`.
+Both firmware images built; compiled bindings and browser checks passed.
+The served HTML was regenerated without the pending notice.
+
+## Flashed correction — Hyper thumb
+
+User corrected Meh to Hyper. Main-layer outer right thumb now binds
+`&hyper LG(LS(LA(LCTRL)))` (Ctrl+Alt+Shift+Cmd); Nav retains decimal.
+Flashed left/central + (`842AA5C13B65DD18`); data copy completed.
+The bootloader disappeared; application USB re-enumeration was not
+observed in the immediate follow-up checks. Compiled Hyper binding
+verified (`0xe0700e0`); browser checks passed. Preview regenerated
+without pending notice. Left SHA-256:
+`bea629bbd58396a5696b206e002e3563a779de584fb15c75a18a22969e1fe676`.
+
+## Included in flashed update — Nav / Num cleanup
+
+Removed separate Numbers layer and its combo references; Esc is plain Escape.
+Nav / Num quote=semicolon (Ctrl hold retained), H=colon, P=minus.
+Z/X/C/V now match the Glove80 QWERTY bottom-most switching keys:
+Cmd+Shift+grave, Ctrl+Shift+Tab, Ctrl+Tab, Cmd+grave respectively.
+Source: local Glorious Engrammer v41 keymap, layer_QWERTY bottom row.
+Five layers remain; home-row hold timings and one-shot Hyper unchanged.
+Updated practice page and docs; included in the Escape/Hyper thumb flash below.
+
+## Flashed update — Escape combo and left Hyper thumb
+
+S+D+F (`11 12 13`) sends Escape on Base, with the normal 50 ms combo
+window. Existing S+D=grave and D+F=Tab remain as smaller chords.
+Moved one-shot Hyper to the outer left thumb (position 30, formerly Esc).
+Restored outer right thumb (33) to Enter on Base; Nav retains decimal.
+Controls still overrides outer left thumb with left bootloader; Functions
+still uses it for return-to-Base. Page/docs updated; 23 combos, five layers.
+Includes the preceding Nav / Num cleanup. Flashed left/central +
+(`842AA5C13B65DD18`); data copy completed. SHA-256:
+`749f7a4abe82650eb386479decc387fc753906fee187b9ce5fa8d1212a11ab78`.
+Compiled bindings and browser checks passed; preview regenerated without
+pending notice.
+
+## Flashed update — Hyper home-row chords and Caps Lock
+
+Base Z+slash (`20 29`) toggles Caps Lock. Base A+S+D+F (`10 11 12 13`)
+and J+K+L+quote (`16 17 18 19`; user's JKL; physical positions) each arm
+one-shot Hyper using the existing 5 s lazy/quick-release behavior.
+Right four-key chord replaces its former Caps Lock action. Existing
+thumb Hyper, Backspace+Space Hyper, S+D+F Escape and J+K+L Enter remain.
+Five layers, 25 combos. Page/docs updated. Flashed left/central +
+(`842AA5C13B65DD18`); data copy completed. Left SHA-256:
+`e47c20eb4bd54dce075d306e6ada69b94e94d4e9c38cd5479bad8b7a357e6032`.
+Compiled chord bindings and browser checks passed; preview regenerated
+without the pending firmware notice.
+
+## Flashed update — held Bluetooth controls
+
+Replaced Q+T toggle with left-thumb combo (`30 31`, `&mo BT_L`, 150 ms,
+Base/Nav), normal release: releasing either thumb deactivates controls.
+This consumes the individual Hyper/Backspace actions when chorded.
+Profiles use M/comma/period=1/2/3, J/K=4/5, matching Nav / Num.
+Q=USB, W=BLE, Enter=clear current bond. Z=left bootloader, slash=right
+bootloader; both use source-local bindings. P=right reset, Y=unstick,
+G=Games. All unused controls-layer positions are `&none`.
+Profile selection does not auto-exit while held; releasing the thumb pair
+provides the exit independent of connection or selected profile.
+Five layers, 25 combos; page/docs updated. Both images built, compiled
+bindings and browser checks passed. Flashed left/central +
+(`842AA5C13B65DD18`); data copy completed. Left SHA-256:
+`51007d5030b81413ea559f13640cf8e7b370bdb79c91aa67c27e604178109a71`.
+Preview regenerated without pending firmware notice.
+
+## Flashed update — USB/Bluetooth positions and Games removal
+
+Bluetooth controls now use U=USB and B=BLE; Q/W are disabled. Removed
+Games layer, its G entry key, and all Games combo references. Four layers
+remain: Base 0, Nav/Num 1, Bluetooth 2, Functions 3. Other controls and
+thumb-held entry unchanged. Updated preview/docs. Flashed left/central +
+(`842AA5C13B65DD18`); data copy completed and same serial re-enumerated
+as Felix Sweep. Left SHA-256:
+`7aeeec3e00bd2afc0751e9ba1b981862369d8147b73eba586a9754d5c43c7ef9`.
+Preview regenerated without pending notice.
+
+## Power/version review — 28 October 2026
+
+Built configs for both halves: idle 30000 ms, deep sleep enabled after
+5400000 ms (90 min), battery reports every 60 s. activity.c skips deep
+sleep while USB power is present; both kscan nodes have wakeup-source.
+No Studio, soft off, mouse emulation, display, or right-battery fetching.
+Repo app/VERSION declares 0.3.0; local west uses Zephyr 3.5. Upstream
+GitHub latest published release is v0.3.0 (2025-08-01); main is
+4dd95d7840eb3d5a3f59bb29fbf1ab054715ef85 (2026-10-09), with Zephyr 4.1.
+Thus this custom fork is not current upstream main despite matching the
+release version number. No upstream update or power changes made.
+Suggested optional screenless features: peripheral battery reporting
+(host app may be needed), soft off for travel (wake via reset unless a
+wake input is configured), key repeat, and Studio for runtime remaps
+(with combo/timing limitations and its runtime-vs-source keymap caveat).
+
+## Upgrade preparation — 28 October 2026
+
+User clarified there are no accessible physical reset buttons: reset was
+wired to ground in the DIY assembly. Preserve firmware bootloader keys
+on both halves; do not enable soft off without an independently verified
+wake/recovery path. Prior suggestions to wake via physical reset are not
+applicable to this assembled keyboard.
+Saved current UF2s under build/pre-upstream-upgrade/ before migrating.
+Plan: fresh branch from upstream main, copy only Sweep config/docs/build
+helper/practice page; enable Studio USB on left central and add unlock key.
+Studio remapping uses USB serial, not a mounted filesystem; firmware UF2
+flashes still use the bootloader volume and must be done on a host that
+permits it. Studio does not replace full firmware updates.

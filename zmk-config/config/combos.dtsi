@@ -13,18 +13,19 @@ combo_##NAME { \
 };
 
 // Sweep-specific controls remain available.
-combo_qt {
-    bindings = <&tog BT_L>;
-    key-positions = <0 4>;
-    layers = <BASE NAV_L BT_L NUM_L>;
+combo_left_thumbs {
+    bindings = <&mo BT_L>;
+    key-positions = <30 31>;
+    layers = <BASE NAV_L>;
     timeout-ms = <150>;
 };
-COMBO(right_thumbs, &sl FUN_L, 32 33, BASE NAV_L GAME)
-COMBO(hyper, &hyper LG(LS(LA(LCTRL))), 31 32, BASE NAV_L GAME FUN_L NUM_L)
+COMBO(right_thumbs, &sl FUN_L, 32 33, BASE NAV_L)
+COMBO(hyper, &hyper LG(LS(LA(LCTRL))), 31 32, BASE NAV_L FUN_L)
 
 // Glove80 alpha-key combos; quote substitutes for its home-row semicolon.
 COMBO(df, &kp TAB, 12 13, BASE)
 COMBO(sd, &kp GRAVE, 11 12, BASE)
+COMBO(sdf_escape, &kp ESC, 11 12 13, BASE)
 COMBO(as, &sk LSHFT, 10 11, BASE)
 COMBO(az_shift, &kp LSHFT, 10 20, BASE)
 COMBO(quoteslash_shift, &kp RSHFT, 19 29, BASE)
@@ -33,7 +34,9 @@ COMBO(fg, &kp EXCL, 13 14, BASE)
 COMBO(hj, &kp QMARK, 15 16, BASE)
 COMBO(jk, &kp LA(BSPC), 16 17, BASE)
 COMBO(jkl, &kp RET, 16 17 18, BASE)
-COMBO(jklquote, &kp CAPSLOCK, 16 17 18 19, BASE)
+COMBO(jklquote, &hyper LG(LS(LA(LCTRL))), 16 17 18 19, BASE)
+COMBO(asdf_hyper, &hyper LG(LS(LA(LCTRL))), 10 11 12 13, BASE)
+COMBO(zslash_caps, &kp CAPSLOCK, 20 29, BASE)
 COMBO(jquote, &caps_word, 16 19, BASE)
 COMBO(zx, &kp LG(X), 20 21, BASE)
 COMBO(xc, &kp LG(C), 21 22, BASE)

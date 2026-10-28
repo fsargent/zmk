@@ -6,9 +6,7 @@
 #define BASE 0
 #define NAV_L 1
 #define BT_L 2
-#define GAME 3
-#define FUN_L 4
-#define NUM_L 5
+#define FUN_L 3
 
 // Core home-row settings from the daily-driver Glove80 QWERTY keymap.
 // Opposite-hand keys and all thumbs can trigger a hold; decide on release.
@@ -47,7 +45,7 @@
     };
 
     behaviors {
-        // Apply Ctrl+Alt+Shift+GUI to the next key only; expire if unused.
+        // One-shot multi-modifier chords: Hyper and Meh; expire if unused.
         hyper: sticky_hyper {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -118,39 +116,27 @@
         &kp Q        &kp W        &kp E        &kp R        &kp T              &kp Y        &kp U        &kp I           &kp O          &kp P
         &hr_lp LCTRL A &hr_lr LALT S &hr_lm LGUI D &hr_li LSFT F &kp G              &kp H        &hr_ri LSFT J &hr_rm LGUI K &hr_rr LALT L &hr_rp LCTRL SQT
         &kp Z   &kp X  &kp C        &kp V        &kp B              &kp N        &kp M        &kp COMMA  &kp DOT  &kp FSLH
-                                              &thumb NUM_L ESC &thumb NAV_L BSPC                     &kp SPACE    &skq RSHFT
+                                              &hyper LG(LS(LA(LCTRL))) &thumb NAV_L BSPC              &kp SPACE    &kp RET
             >;
         };
 
         nav_layer {
-            display-name = "Nav";
+            display-name = "Nav / Num";
             bindings = <
-        &sk LSHFT       &kp LG(LS(Z)) &kp UP        &kp BSPC       &kp LG(X)       &kp LG(X) &kp BSPC  &kp LG(Z) &kp LG(LS(Z)) &sk LSHFT
-        &kp LA(LEFT)    &kp LEFT       &kp DOWN      &kp RIGHT      &kp LA(RIGHT)    &kp LG(C) &kp LSFT  &kp LGUI   &kp LALT       &kp LCTRL
-        &kp LG(A)      &kp LG(L)     &kp LA(LS(RIGHT)) &kp LG(F) &kp LG(F)       &kp LG(V) &kp HOME  &kp PG_UP  &kp PG_DN      &kp END
-                                              &trans          &trans                       &trans     &trans
-        >;
+        &sk LSHFT       &kp LG(LS(Z)) &kp UP          &kp BSPC          &kp LG(X)      &kp PLUS &kp N7         &kp N8         &kp N9         &kp MINUS
+        &hr_lp LCTRL LA(LEFT) &hr_lr LALT LEFT &hr_lm LGUI DOWN &hr_li LSFT RIGHT &kp LA(RIGHT) &kp COLON &hr_ri LSFT N4 &hr_rm LGUI N5 &hr_rr LALT N6 &hr_rp LCTRL SEMI
+        &kp LS(LG(GRAVE)) &kp LS(LC(TAB)) &kp LC(TAB) &kp LG(GRAVE)       &kp LG(F)        &kp ASTRK &kp N1         &kp N2         &kp N3         &kp FSLH
+                                              &trans          &trans                       &kp N0     &kp DOT
+            >;
         };
 
         bt_layer {
             display-name = "Bluetooth";
             bindings = <
-        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2      &bt BT_SEL 3  &bt BT_SEL 4      &unstick      &out OUT_USB  &trans  &none  &sys_reset
-        &trans        &trans        &trans            &kp LC(LA(DEL)) &bt BT_PRV     &bt BT_NXT    &trans        &trans  &trans  &kp LC(LA(DEL))
-        &bt BT_CLR    &trans        &trans            &trans       &out OUT_BLE      &trans        &trans        &trans  &trans  &bootloader
-                                                      &bootloader  &to GAME                           &trans        &trans
-            >;
-        };
-
-
-
-        games_layer {
-            display-name = "Games";
-            bindings = <
-        &kp Q     &kp W  &kp E  &kp R  &kp T            &kp Y      &kp U  &kp I           &kp O          &kp P
-        &kp A     &kp S  &kp D  &kp F  &kp G            &kp H      &kp J  &kp K           &kp L          &kp SQT
-        &kp LSFT  &kp X  &kp C  &kp V  &kp B            &kp N      &kp M  &hm RALT COMMA  &hm RCTRL DOT  &sh RSFT FSLH
-                                   &kp LCTRL &kp BSPC                  &kp SPACE  &sh LALT RET
+        &none &none &none &none &none                   &unstick &out OUT_USB &none &none &sys_reset
+        &none &none &none &none &none                   &none &bt BT_SEL 3 &bt BT_SEL 4 &none &none
+        &bootloader &none &none &none &out OUT_BLE      &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bootloader
+                                              &none &none              &none &bt BT_CLR
             >;
         };
 
@@ -164,15 +150,6 @@
             >;
         };
 
-        number_layer {
-            display-name = "Numbers";
-            bindings = <
-        &sk LSHFT &kp LG(LS(Z)) &kp LG(Z) &kp BSPC &kp D     &kp PLUS  &kp N7 &kp N8 &kp N9 &kp COLON
-        &kp LCTRL &kp LALT     &kp LGUI  &kp LSFT &kp E     &kp PLUS  &kp N4 &kp N5 &kp N6 &kp MINUS
-        &kp LG(A) &kp LG(L)    &kp LA(LS(RIGHT)) &kp X &kp F &kp ASTRK &kp N1 &kp N2 &kp N3 &kp FSLH
-                                     &trans &trans                  &kp N0 &kp DOT
-            >;
-        };
 
     };
 };

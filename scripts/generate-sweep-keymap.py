@@ -34,7 +34,7 @@ for match in re.finditer(r'(\w+_layer)\s*\{\s*display-name\s*=\s*"([^"]+)";\s*bi
     if len(bindings) != 34:
         raise ValueError(f'{match[1]}: expected 34 bindings, got {len(bindings)}')
     layers.append({'node': match[1], 'name': match[2], 'bindings': bindings})
-assert len(layers) == 6, f'Expected six layers, got {len(layers)}'
+assert len(layers) == 4, f'Expected four layers, got {len(layers)}'
 combos = []
 for line in uncomment(combo_source).splitlines():
     if not line.startswith('COMBO('):

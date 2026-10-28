@@ -16,13 +16,15 @@ The right pinky
 keeps quote because the Sweep lacks the Glove80's extra semicolon column.
 Bottom-row letters are plain taps. The Glove80's alpha-block combos are now
 ported, including D+F=Tab, S+D=grave, A+S=sticky Shift, J+K=Alt+Backspace,
-J+K+L=Enter, J+K+L+quote=Caps Lock, J+quote=Caps Word, and Z+X/X+C/C+V=cut/copy/paste.
+J+K+L=Enter, J+quote=Caps Word, and Z+X/X+C/C+V=cut/copy/paste.
+Z+slash toggles Caps Lock. A+S+D+F and J+K+L+quote each arm one-shot
+Hyper (Ctrl+Alt+Shift+Cmd) on Base; release the chord before the target key.
 A+Z and quote+slash act as held Shift on the typing layer: press both
 within 50 ms, keep them held while typing, and release either to end Shift.
 M+comma=minus; comma+period and period+slash=equals; N+M+comma=underscore.
 Alpha combos use the Glove80 default 50 ms window and apply to typing layers only.
-The Q+T control-layer combo uses a more forgiving 150 ms window and is also
-enabled inside the control layer, so it can toggle back out.
+The two left thumbs open Bluetooth controls while held together, with a
+150 ms combo window. Releasing either thumb exits the momentary layer.
 Combos that require extra Glove80 columns or thumb keys are omitted.
 
 Backspace+Space arms one-shot Hyper (Ctrl+Alt+Shift+Cmd) for the next key.
@@ -31,37 +33,52 @@ Quick-release limits Hyper to that key, even during rapid typing. Lazy
 activation avoids sending modifier presses until the target key arrives.
 This replaces the old Backspace+Space unstick combo; the Bluetooth/control
 layer still has Unstick on Y. Hyper applies on normal typing, navigation,
-number, function, and gaming layers, but not Bluetooth.
+and function layers, but not Bluetooth.
 
 ## Thumb layers
 
-The former Enter thumb is one-shot Shift on the normal typing
-layer (also inherited by navigation). Tap it, then type the next key within
-one second. Shift releases immediately after the next key registers, so
-overlapping letter presses do not capitalize a second letter. Holding the
-thumb still acts as normal Shift. Use J+K+L for Enter. Numbers retains its decimal point binding.
+The outer left thumb (formerly Escape) is one-shot Hyper
+(Ctrl+Alt+Shift+Cmd). Tap and release it, then press the target within
+five seconds. Quick-release and lazy activation limit Hyper to one key.
+S+D+F sends Escape on the typing layer (50 ms combo window).
+The outer right thumb sends Enter on Base and decimal on Nav / Num.
+J+K+L also sends Enter; Backspace+Space also arms one-shot Hyper.
 
-Tap Esc for Escape; hold it for Numbers. Tap Backspace for Backspace; hold
-it for Navigation. Both use Glove80 thumb timing: balanced, 200 ms tapping
-term, 300 ms quick-tap. Tap then hold quickly to repeat the tap key.
+Tap Backspace for Backspace; hold it for Nav / Num.
+Backspace uses Glove80 thumb timing: balanced, 200 ms tapping term,
+300 ms quick-tap. Tap then hold quickly to repeat Backspace.
 
-Navigation has E=Up, S=Left, D=Down, F=Right. The right home row is
-H=Copy, J=Shift, K=Cmd, L=Alt, quote=Ctrl, matching the Glove80 cursor
-layer. N=Paste, M=Home, comma=Page Up, period=Page Down, slash=End.
-Advanced selection macros are replaced with basic shortcuts.
+Navigation combines ESDF arrows with the right-hand number pad:
+U/I/O=7/8/9, J/K/L=4/5/6, M/comma/period=1/2/3, Space=0,
+Y=plus, H=colon, N=asterisk, P=minus, quote=semicolon, slash=divide,
+outer right thumb=decimal.
+Both home rows retain the normal modifier holds (Ctrl/Alt/Cmd/Shift,
+mirrored on the right), with the same timing and positional rules.
+Tap the keys for their arrows, numbers, or symbols; hold for modifiers.
+The former right-side editing/navigation bindings are replaced by numbers.
 
-Numbers has U/I/O=7/8/9, J/K/L=4/5/6, M/comma/period=1/2/3,
-Space=0, Enter=decimal point, Y=plus, H=plus, N=asterisk,
-P=colon, quote=minus, slash=divide.
-The Esc thumb replaces the Glove80's dedicated number-layer thumb key.
+Nav Z/X/C/V match the four Glove80 bottom-row window/tab shortcuts:
+Z=Cmd+Shift+grave (previous window), X=Ctrl+Shift+Tab (previous tab),
+C=Ctrl+Tab (next tab), V=Cmd+grave (next window). B remains Cmd+F (Find).
+The separate Numbers layer has been removed.
 
-Q+T toggles controls. Release the combo, then tap the Esc thumb to enter
-the left controller's bootloader. P is restart and slash is bootloader on
-the right side; the reset behaviors are source-local. A physical double-tap
-reset remains a dependable per-controller bootloader entry method.
+## Bluetooth controls
 
-The six layers are Typing, Navigation, Bluetooth/controls, Games, Functions,
-and Numbers. Windows, Windows navigation, and Switch test were removed.
+Hold both left thumbs (the former Esc and Backspace positions), then:
+- M/comma/period select profiles 1/2/3; J/K select profiles 4/5.
+- U selects USB output; B selects Bluetooth output.
+- Enter clears the current profile's Bluetooth bond.
+- Z enters the left bootloader; slash enters the right bootloader.
+- P restarts the right controller; Y unsticks modifiers.
+
+Release either thumb to exit. Profile selection keeps controls active only
+while the thumbs remain held; it does not latch the layer after switching.
+No key in this layer falls through to typing. Q+T no longer toggles it.
+Bootloader/reset bindings act on the physical half that produces the key.
+
+The four layers are Typing, Nav / Num, Bluetooth/controls, and Functions.
+Games, separate Numbers, Windows, Windows navigation, and Switch test
+were removed.
 
 Build from the repository root: `./flash-sweep.sh --build-only`.
 Flash `build/felix-sweep-left.uf2` to the left nice!nano v2 and
