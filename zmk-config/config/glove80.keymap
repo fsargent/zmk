@@ -1,0 +1,66 @@
+#include "../../Glorious Engrammer v41 - fsargent - 1200.keymap"
+
+/ {
+    combos {
+        // Vertical QWERTY pairs produce shifted number-row keys.
+        combo_qa_shifted_number {
+            key-positions = <POS_LH_C5R3 POS_LH_C5R4>;
+            bindings = <&kp LS(N1)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_ws_shifted_number {
+            key-positions = <POS_LH_C4R3 POS_LH_C4R4>;
+            bindings = <&kp LS(N2)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_ed_shifted_number {
+            key-positions = <POS_LH_C3R3 POS_LH_C3R4>;
+            bindings = <&kp LS(N3)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_rf_shifted_number {
+            key-positions = <POS_LH_C2R3 POS_LH_C2R4>;
+            bindings = <&kp LS(N4)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_tg_shifted_number {
+            key-positions = <POS_LH_C1R3 POS_LH_C1R4>;
+            bindings = <&kp LS(N5)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_yh_shifted_number {
+            key-positions = <POS_RH_C1R3 POS_RH_C1R4>;
+            bindings = <&kp LS(N6)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_uj_shifted_number {
+            key-positions = <POS_RH_C2R3 POS_RH_C2R4>;
+            bindings = <&kp LS(N7)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_ik_shifted_number {
+            key-positions = <POS_RH_C3R3 POS_RH_C3R4>;
+            bindings = <&kp LS(N8)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_ol_shifted_number {
+            key-positions = <POS_RH_C4R3 POS_RH_C4R4>;
+            bindings = <&kp LS(N9)>;
+            layers = <LAYER_QWERTY>;
+        };
+
+        combo_psemi_shifted_number {
+            key-positions = <POS_RH_C5R3 POS_RH_C5R4>;
+            bindings = <&kp LS(N0)>;
+            layers = <LAYER_QWERTY>;
+        };
+    };
+};

@@ -1,0 +1,41 @@
+name: Glove80 firmware
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Glorious Engrammer v41 - fsargent - 1200.keymap"
+      - "zmk-config/**"
+      - ".github/workflows/glove80.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/zmkfirmware/zmk-build-arm:4.1
+    strategy:
+      fail-fast: false
+      matrix:
+        board: [glove80_lh, glove80_rh]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Initialize workspace
+        run: west init -l app
+      - name: Fetch dependencies
+        run: west update --fetch-opt=--filter=tree:0
+      - name: Export Zephyr
+        run: west zephyr-export
+      - name: Build firmware
+        run: west build -s app -d build/${{ matrix.board }} -b ${{ matrix.board }} -- -DZMK_CONFIG="$GITHUB_WORKSPACE/zmk-config/config"
+        env:
+          ZEPHYR_TOOLCHAIN_VARIANT: zephyr
+      - name: Upload firmware
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.board }}-firmware
+          path: build/${{ matrix.board }}/zephyr/zmk.uf2
+          if-no-files-found: error
